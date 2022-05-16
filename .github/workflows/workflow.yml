@@ -16,6 +16,7 @@ jobs:
     - run: |
         docker build . -t miecr.azurecr.io/webimage:${{ github.sha }}
         docker push miecr.azurecr.io/webimage:${{ github.sha }}
+        docker tag miecr.azurecr.io/webimage:${{ github.sha }} miecr.azurecr.io/webimage:latest
         docker push miecr.azurecr.io/webimage:latest
 
     - uses: azure/webapps-deploy@v2
