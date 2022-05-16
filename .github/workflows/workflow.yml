@@ -15,7 +15,8 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
         docker build . -t miecr.azurecr.io/webimage:${{ github.sha }}
-        docker push miecr.azurecr.io/webimage:${{ github.sha }}   
+        docker push miecr.azurecr.io/webimage:${{ github.sha }}
+        docker push miecr.azurecr.io/webimage:latest
 
     - uses: azure/webapps-deploy@v2
       with:
