@@ -26,4 +26,4 @@ jobs:
         with:
           app-name: "luv-ita-ase-eastjp-01"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: "crluvtest.azurecr.io/webimage:${{ github.sha }}"
+          images: "crluvtest.azurecr.io/webimage:latest"
