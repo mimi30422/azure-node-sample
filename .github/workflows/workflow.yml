@@ -4,23 +4,23 @@ on: [push]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: miecr.azurecr.io
+        login-server: crluvtest.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t miecr.azurecr.io/webimage:${{ github.sha }}
-        docker push miecr.azurecr.io/webimage:${{ github.sha }}
-        docker tag miecr.azurecr.io/webimage:${{ github.sha }} miecr.azurecr.io/webimage:latest
-        docker push miecr.azurecr.io/webimage:latest
+        docker build . -t crluvtest.azurecr.io/webimage:${{ github.sha }}
+        docker push crluvtest.azurecr.io/webimage:${{ github.sha }}
+        docker tag crluvtest.azurecr.io/webimage:${{ github.sha }} crluvtest.azurecr.io/webimage:latest
+        docker push crluvtest.azurecr.io/webimage:latest
 
-    - uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'mmmmmmmmmmmmmmmm'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: 'miecr.azurecr.io/webimage:${{ github.sha }}'
+    # - uses: azure/webapps-deploy@v2
+    #   with:
+    #     app-name: 'mmmmmmmmmmmmmmmm'
+    #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    #     images: 'crluvtest.azurecr.io/webimage:${{ github.sha }}'
